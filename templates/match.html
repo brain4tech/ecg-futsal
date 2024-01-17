@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{ home }} vs {{ away }}
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-5 display-4 border border-2 border-dark rounded mb-4">
+            <span id="minutes" class="d-inline">{{match_minutes}}</span>
+            <span class="d-inline">:</span>
+            <span id="seconds" class="d-inline">00</span>
+        </div>
+    </div>
+    <div class="row align-items-center">
+        <div class="team-details w-100 text-center col">
+            <img src="{{ url_for('static', filename=home + '.png') }}" alt="Image" class="img-fluid">
+            <div class="display-4">{{ home }}</div>
+            <div class="row">
+                <button id="addHome" class="scorebtn btn btn-dark col my-4 mx-1 rounded-pill" type="button">+</button>
+                <button id="minHome" class="scorebtn btn btn-dark col my-4 mx-1 rounded-pill" type="button">-</button>
+            </div>
+        </div>
+        <div class="col display-2">
+            <span id="homeScore">0</span>
+            -
+            <span id="awayScore">0</span>
+        </div>
+        <div class="team-details w-100 text-center col">
+            <img src="{{ url_for('static', filename=away + '.png') }}" alt="Image" class="img-fluid">
+            <div class="display-4">{{ away }}</div>
+            <div class="row">
+                <button id="addAway" class="scorebtn btn btn-dark col my-4 mx-1 rounded-pill" type="button">+</button>
+                <button id="minAway" class="scorebtn btn btn-dark col my-4 mx-1 rounded-pill" type="button">-</button>
+            </div>
+        </div>
+    </div>
+    <button id="start" class="btn btn-lg btn-primary m-3" type="button">START</button>
+    <form action="/standings/{{ TournamentId }}" method="post">
+        <input type="hidden" name="form_id" value="match">
+        <input type="hidden" id="homeScoreSubmit" name="homescore" value="0">
+        <input type="hidden" id="awayScoreSubmit" name="awayscore" value="0">
+        <input type="hidden" name="home_id" value="{{home_id}}">
+        <input type="hidden" name="away_id" value="{{away_id}}">
+        <input type="hidden" name="match_id" value="{{ match_id }}">
+        <button id="submit" class="d-none btn btn-lg btn-primary m-3" type="submit">INDIENEN</button>
+    </form>
+</div>
+
+<script src="{{ url_for('static', filename='match.js') }}"></script>
+{% endblock %}

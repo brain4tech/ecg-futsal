@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+    <form action="/newtournament" method="get">
+        <button class="btn btn-primary mb-5 mx-1 rounded-pill" type="submit">Nieuw Toernooi</button>
+    </form>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Datum</th>
+            <th scope="col">Bekijken</th>
+        </tr>
+        </thead>
+        <tbody>
+        {%- for tournament in tournaments %}
+        <tr>
+            <td class="align-middle">{{ tournament["TournamentDate"] }}</td>
+            <td class="align-middle">
+                <form action="/standings/{{ tournament['TournamentId'] }}" method="post">
+                    <button class="btn btn-dark" type="submit">&rArr;</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

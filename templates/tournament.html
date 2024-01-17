@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Tournament
+{% endblock %}
+
+{% block main %}
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Team</th>
+            <th scope="col">PT</th>
+            <th scope="col">DS</th>
+            <th scope="col">D+</th>
+            <th scope="col">D-</th>
+        </tr>
+        </thead>
+        <tbody>
+        {%- for team in teams %}
+        <tr>
+            <th scope="row">{{ loop.index }}</th>
+            <td>{{ team["TeamName"].capitalize() }}</td>
+            <td>{{ team["Points"] }}</td>
+            <td>{{ team["GoalBalance"] }}</td>
+            <td>{{ team["GoalsScored"] }}</td>
+            <td>{{ team["GoalsConceded"] }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h4 class="my-4">{{ next }}</h4>
+    <form action="/match" method="post">
+        <input type="hidden" name="TournamentId" value="{{ TournamentId }}">
+        <input type="hidden" name="match_id" value="{{ match_id }}">
+        <button class="btn btn-primary" type="submit">&rArr;</button>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    New tournament
+{% endblock %}
+
+{% block main %}
+<form action="/newtournament" method="post">
+  <div class="mb-3">
+    <label class="mx-auto my-2 w-50" for="rounds"><strong>Hoevaak tegen elke tegenstander?</strong></label>
+    <select class="form-control mx-auto my-2 w-50" name="rounds" id="rounds">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
+  </div>
+
+  <div class="mb-3 mx-auto w-50">
+    <label class="mx-auto my-2 w-100" for="time"><strong>Hoeveel minuten per wedstrijd?</strong></label>
+    <select class="form-control mx-auto my-2 w-100" name="time" id="time">
+        <option value="5">5 minuten</option>
+        <option value="6">6 minuten</option>
+        <option value="7">7 minuten</option>
+        <option value="8">8 minuten</option>
+        <option value="9">9 minuten</option>
+        <option value="10">10 minuten</option>
+    </select>
+  </div>
+
+  <div class="mb-3 w-50 mx-auto">
+    <p class="my-2 w-100"><strong>Welke teams spelen?</strong></p>
+    <div class="mx-auto form-check w-50">
+      <input class="form-check-input" type="checkbox" id="team1" name="teams" value="groen">
+      <label class="form-check-label text-start" for="team1"> Groen</label><br>
+    </div>
+    <div class="mx-auto form-check w-50">
+      <input class="form-check-input" type="checkbox" id="team2" name="teams" value="blauw">
+      <label class="form-check-label" for="team2"> Blauw</label><br>
+    </div>
+    <div class="mx-auto form-check w-50">
+      <input class="form-check-input" type="checkbox" id="team3" name="teams" value="oranje">
+      <label class="form-check-label" for="team3"> Oranje</label><br>
+    </div>
+    <div class="mx-auto form-check w-50">
+      <input class="form-check-input" type="checkbox" id="team4" name="teams" value="grijs">
+      <label class="form-check-label" for="team4"> Grijs</label><br>
+    </div>
+  </div>
+
+  <input type="hidden" name="form_id" value="start">
+  <button class="btn btn-primary my-3" type="submit">Start Nieuw Toernooi</button>
+</form>
+{% endblock %}
