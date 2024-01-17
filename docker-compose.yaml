@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: .
+      network: host
+    container_name: ecg_futsaal
+    # networks:
+    #   - my_network
+    restart: unless-stopped
+
+# remove '#' to deploy behind external network
+# networks:
+#   my_network:
+#     external: true
