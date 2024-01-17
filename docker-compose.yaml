@@ -5,7 +5,7 @@ services:
     build:
       context: .
       network: host
-    container_name: ecg_futsaal
+    container_name: ecg_futsal
     # networks:
     #   - my_network
     restart: unless-stopped
