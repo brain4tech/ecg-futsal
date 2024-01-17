@@ -1,0 +1,20 @@
+# code editors and IDEs
+.idea
+.vs
+.vscode
+.fleet
+
+# JetBrains configuration
+*.iws
+*.iml
+*.ipr
+
+# macOS stuff
+.DS_Store
+
+# database files
+db
+*.db
+
+# session files
+flask_session
